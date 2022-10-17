@@ -22,34 +22,34 @@ class Calculadora(QMainWindow):
     def componentesDisplay(self): 
         self.mostrador.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         self.grid.addWidget(self.mostrador, 0, 0, 1, 5)
-        # self.mostrador.setDisabled(True)
+        self.mostrador.setDisabled(True)
         self.setCentralWidget(self.cw)
     
 
-    def componentesBotoes(self, textoBotao: str, row, col, rowspan, colspan):
-        self.botao = QPushButton(textoBotao, self)
-        self.botao.clicked.connect(self.addNumerosDisplay)
-        self.grid.addWidget(self.botao, row, col, rowspan, colspan)
+    def componentesBotoes(self, botao, row, col, rowspan, colspan):
+        botao.clicked.connect(
+            lambda: self.mostrador.setText(
+            self.mostrador.text() + botao.text()
+            )
+        )
+        botao.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        self.grid.addWidget(botao, row, col, rowspan, colspan)
+
 
     
 
     def setBotoes(self):
-        self.componentesBotoes('0', 1, 0, 1, 1)
-        self.componentesBotoes('1', 1, 1, 1, 1)
-        self.componentesBotoes('2', 1, 2, 1, 1)
-        self.componentesBotoes('3', 2, 0, 1, 1)
-        self.componentesBotoes('4', 2, 1, 1, 1)
-        self.componentesBotoes('5', 2, 2, 1, 1)
-        self.componentesBotoes('6', 3, 0, 1, 1)
-        self.componentesBotoes('7', 3, 1, 1, 1)
-        self.componentesBotoes('8', 3, 2, 1, 1)
-        self.componentesBotoes('1', 4, 0, 1, 1)
+        self.componentesBotoes(QPushButton('0', self), 1, 0, 1, 1)
+        self.componentesBotoes(QPushButton('1', self), 1, 1, 1, 1)
+        self.componentesBotoes(QPushButton('2', self), 1, 2, 1, 1)
+        self.componentesBotoes(QPushButton('3', self), 2, 0, 1, 1)
+        self.componentesBotoes(QPushButton('4', self), 2, 1, 1, 1)
+        self.componentesBotoes(QPushButton('5', self), 2, 2, 1, 1)
+        self.componentesBotoes(QPushButton('6', self), 3, 0, 1, 1)
+        self.componentesBotoes(QPushButton('7', self), 3, 1, 1, 1)
+        self.componentesBotoes(QPushButton('8', self), 3, 2, 1, 1)
+        self.componentesBotoes(QPushButton('9', self), 4, 0, 1, 1)
 
-
-    def addNumerosDisplay(self):
-        return self.mostrador.setText(
-            self.mostrador.text() + self.botao.text()
-        )
 
 if __name__ == '__main__':
     qt = QApplication(sys.argv)
