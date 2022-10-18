@@ -39,6 +39,7 @@ class Calculadora(QMainWindow):
         else:
             botao.clicked.connect(func)
 
+
     def funcBotaoClear(self):
         self.mostrador.setText('')
     
@@ -74,7 +75,7 @@ class Calculadora(QMainWindow):
         self.componentesBotoes(QPushButton('C', self), 1, 0, 1, 1, self.funcBotaoClear)
         self.componentesBotoes(QPushButton('**', self), 1, 1, 1, 1)
         self.componentesBotoes(QPushButton('SQRT', self), 1, 2, 1, 1, self.funcSQRT)
-        self.componentesBotoes(QPushButton('X', self), 1, 3, 1, 1)
+        self.componentesBotoes(QPushButton('*', self), 1, 3, 1, 1)
         self.componentesBotoes(QPushButton('9', self), 2, 0, 1, 1)
         self.componentesBotoes(QPushButton('8', self), 2, 1, 1, 1)
         self.componentesBotoes(QPushButton('7', self), 2, 2, 1, 1)
