@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout
 from PyQt5.QtWidgets import QPushButton, QLineEdit, QSizePolicy
 import math
 
+
 class Calculadora(QMainWindow):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -58,7 +59,7 @@ class Calculadora(QMainWindow):
             self.mostrador.setText(
                 'Operação Inválida'
             )
-    
+
 
     def funcSQRT(self):
         try:
@@ -69,28 +70,37 @@ class Calculadora(QMainWindow):
             self.mostrador.setText(
                 'Operação Inválida'
             )
-    
+
+
+    def funcBackSpace(self):
+        self.mostrador.setText(
+            self.mostrador.text()[:-1]
+        )
 
     def setBotoes(self):
         self.componentesBotoes(QPushButton('C', self), 1, 0, 1, 1, self.funcBotaoClear)
         self.componentesBotoes(QPushButton('**', self), 1, 1, 1, 1)
         self.componentesBotoes(QPushButton('SQRT', self), 1, 2, 1, 1, self.funcSQRT)
         self.componentesBotoes(QPushButton('*', self), 1, 3, 1, 1)
+        self.componentesBotoes(QPushButton('<-', self), 1, 4, 1, 1, self.funcBackSpace)
         self.componentesBotoes(QPushButton('9', self), 2, 0, 1, 1)
         self.componentesBotoes(QPushButton('8', self), 2, 1, 1, 1)
         self.componentesBotoes(QPushButton('7', self), 2, 2, 1, 1)
         self.componentesBotoes(QPushButton('/', self), 2, 3, 1, 1)
+        self.componentesBotoes(QPushButton('(', self), 2, 4, 1, 1)
         self.componentesBotoes(QPushButton('6', self), 3, 0, 1, 1)
         self.componentesBotoes(QPushButton('5', self), 3, 1, 1, 1)
         self.componentesBotoes(QPushButton('4', self), 3, 2, 1, 1)
         self.componentesBotoes(QPushButton('+', self), 3, 3, 1, 1)
+        self.componentesBotoes(QPushButton(')', self), 3, 4, 1, 1)
         self.componentesBotoes(QPushButton('3', self), 4, 0, 1, 1)
         self.componentesBotoes(QPushButton('2', self), 4, 1, 1, 1)
         self.componentesBotoes(QPushButton('1', self), 4, 2, 1, 1)
         self.componentesBotoes(QPushButton('-', self), 4, 3, 1, 1)
+        self.componentesBotoes(QPushButton('', self), 4, 4, 1, 1)
         self.componentesBotoes(QPushButton('0', self), 5, 0, 1, 1)
         self.componentesBotoes(QPushButton('.', self), 5, 1, 1, 1)
-        self.componentesBotoes(QPushButton('=', self), 5, 2, 1, 2, self.funcEvalIgual)
+        self.componentesBotoes(QPushButton('=', self), 5, 2, 1, 3, self.funcEvalIgual)
 
 
 if __name__ == '__main__':
