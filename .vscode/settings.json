@@ -1,4 +1,5 @@
 {
     "python.analysis.completeFunctionParens": true,
     "python.linting.flake8Enabled": true,
+    "python.analysis.typeCheckingMode": "basic",
 }
